@@ -1,0 +1,41 @@
+import React from "react";
+import "./Grow.css"
+
+function Grow() {
+  return (
+    <div className="container mt-5 pb-5">
+      <div className="row p-1">
+        <div className=" col-lg-6 ">
+        <div className="growImg1">
+          <div className="forAll">FOR ALL COSMETICS
+          <div className="offer">30%</div>
+          </div>
+          <div  className="d-flex flex-column mt-5 pt-5 forAllText">
+            <h3>We Grow Beauty</h3>
+            <p>
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking organic cosmetics.
+            </p>
+          </div>
+          </div>
+        </div>
+        <div className=" col-lg-6">
+        <div className="growImg2">
+          <div className="forAll">FOR ALL COSMETICS
+          <div className="offer">30%</div>
+          </div>
+          <div className="d-flex flex-column mt-5 pt-5  forAllText">
+            <h3>We Grow Beauty</h3>
+            <p>
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking organic cosmetics.
+            </p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Grow;

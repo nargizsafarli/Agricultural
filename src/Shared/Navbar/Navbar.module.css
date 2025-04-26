@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 30px;
+  align-items: center;
+}
+.logo {
+  width: 150px;
+}
+.link {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+  }
+}
+
+.active {
+  color: orange !important;
+  transform: scale(1.1);
+}
+
+.icons {
+    font-size: 22px;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  p{
+    margin: 0;
+  }
+}
