@@ -1,8 +1,13 @@
 import React from 'react'
+import Navbar from '../Shared/Navbar/Navbar'
+import ContactStatic from '../Components/ContactStatic/ContactStatic'
 
 function ContactPage() {
   return (
-    <div>ContactPage</div>
+    <div>
+      <Navbar/>
+      <ContactStatic/>
+    </div>
   )
 }
 

@@ -1,8 +1,11 @@
 import React from 'react'
+import Navbar from '../Shared/Navbar/Navbar'
 
 function AboutPage() {
   return (
-    <div>AboutPage</div>
+    <div>
+      <Navbar/>
+    </div>
   )
 }
 
