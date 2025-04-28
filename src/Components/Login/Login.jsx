@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import log from "./Login.module.css";
 import { login } from "../../redux/features/auth/authSlice";
+import Swal from "sweetalert2";
 
 function Login() {
   const dispatch = useDispatch();
@@ -23,7 +24,17 @@ function Login() {
 
     try {
       await dispatch(login({ email, password })).unwrap();
-      navigate("/dashboard");
+      setEmail("");
+      setPassword("");
+      await Swal.fire({
+        title: "Qeydiyyat uğurlu oldu!",
+        text: "İndi giriş edə bilərsiniz.",
+        timer: 3000,
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+  
+      
     } catch (err) {
       console.log("Login xətası:", err);
     }

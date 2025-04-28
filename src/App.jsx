@@ -5,6 +5,7 @@ import Homepage from './Pages/Homepage';
 import ProductPage from './Pages/ProductPage';
 import AboutPage from './Pages/AboutPage';
 import ContactPage from './Pages/ContactPage';
+import WishlistPage from './Pages/WishlistPage';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Route path="product" element={<ProductPage/>} />
       <Route path="about" element={<AboutPage/>} />
       <Route path="contact" element={<ContactPage/>} />
+      <Route path="wishlist" element={<WishlistPage/>}/>
     </Routes>
    </BrowserRouter>
     </div>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import reg from "./Register.module.css";
 import { register } from "../../redux/features/auth/authSlice";
+import Swal from "sweetalert2";
 
 function Register() {
   const dispatch = useDispatch();
@@ -36,8 +37,18 @@ function Register() {
 
     try {
       await dispatch(register({ name, surname, phone, email, password })).unwrap();
-      alert("Qeydiyyat uğurla başa çatdı.");
-      navigate("/login");
+      setName("");
+      setSurname("");
+      setPhone("");
+      setEmail("");
+      setPassword("");
+      await Swal.fire({
+        title: "Uğurla qeydiyyatdan keçdiniz!",
+        icon: "success",
+        timer: 3000,
+        timerProgressBar: true,
+        confirmButtonText: "OK",
+      });
     } catch (err) {
       console.log("Qeydiyyat xətası:", err);
     }

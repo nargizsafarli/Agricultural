@@ -8,6 +8,11 @@
   justify-content: space-between;
   padding: 18px 30px;
   align-items: center;
+  position: sticky;
+  background-color: white;
+  top: 0;
+  z-index: 9999999;
+  border-bottom:solid 1px rgb(230, 227, 227);
 }
 .logo {
   width: 150px;
