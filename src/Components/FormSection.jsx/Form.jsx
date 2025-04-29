@@ -15,7 +15,6 @@ function Form() {
     <div className={auth.container}>
   
 
-    {/* Register Form */}
     <div>
       <button onClick={toggleRegister} className={auth.button}>
         {isRegisterOpen ? "-" : "+"} Register

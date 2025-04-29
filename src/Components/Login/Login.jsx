@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import log from "./Login.module.css";
 import { login } from "../../redux/features/auth/authSlice";
 import Swal from "sweetalert2";
 
 function Login() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { loading, error } = useSelector((state) => state.auth);
 
   const [email, setEmail] = useState("");

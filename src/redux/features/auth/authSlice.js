@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { supabase } from "../../../client";
 
-// Register thunk
+// !Register thunk
 export const register = createAsyncThunk(
   "auth/register",
   async ({ name, surname, phone, email, password }) => {
@@ -21,7 +21,7 @@ export const register = createAsyncThunk(
   }
 );
 
-// Login thunk
+//! Login thunk
 export const login = createAsyncThunk(
   "auth/login",
   async ({ email, password }) => {
@@ -38,7 +38,7 @@ export const login = createAsyncThunk(
   }
 );
 
-// Logout thunk
+//! Logout 
 export const logout = createAsyncThunk(
   "auth/logout",
   async () => {
@@ -46,17 +46,17 @@ export const logout = createAsyncThunk(
   }
 );
 
-// Check session thunk
-export const checkSession = createAsyncThunk(
-  "auth/checkSession",
-  async () => {
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
+// // Check session thunk
+// export const checkSession = createAsyncThunk(
+//   "auth/checkSession",
+//   async () => {
+//     const {
+//       data: { session },
+//     } = await supabase.auth.getSession();
 
-    return session?.user || null;
-  }
-);
+//     return session?.user || null;
+//   }
+// );
 
 const authSlice = createSlice({
   name: "auth",
@@ -103,9 +103,9 @@ const authSlice = createSlice({
       })
 
       // Check session
-      .addCase(checkSession.fulfilled, (state, action) => {
-        state.user = action.payload;
-      });
+    //   .addCase(checkSession.fulfilled, (state, action) => {
+    //     state.user = action.payload;
+    //   });
   },
 });
 
