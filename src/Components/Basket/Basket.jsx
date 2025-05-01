@@ -1,14 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import styles from "./Basket.module.css";
 import { decreaseQuantity, increaseQuantity } from "../../redux/features/auth/basketSlice";
+import { NavLink, useNavigate } from "react-router-dom";
+import PaymentCard from "../PaymentCard/PaymentCard";
+import { Button, Modal } from "antd";
+import Swal from "sweetalert2";
 
 function Basket() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const basketItems = useSelector((state) => state.basket.items);
   const totalPrice = useSelector((state) => state.basket.totalPrice);
   console.log(basketItems);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [cardData, setCardData] = useState({
+    name: "",
+    number: "",
+    expiry: "",
+    cvc: ""
+  });
+
+
+  const showModal = () => setIsModalOpen(true);
+  const handleOk = () => {
+    const { name, number, expiry, cvc } = cardData;
+  
+    // Əgər hər hansı input boşdursa xəbərdarlıq göstər
+    if (!name || !number || !expiry || !cvc) {
+      Swal.fire({
+        icon: "warning",
+        title: "Please fill in all fields",
+        confirmButtonText: "OK"
+      });
+      return;
+    }
+  
+    // Əgər bütün sahələr doludursa, ödənişi tamamla
+    Swal.fire({
+      icon: "success",
+      title: "Order Completed",
+      showConfirmButton: false,
+      timer: 2000
+    });
+  
+    setIsModalOpen(false);
+    setCardData({ name: "", number: "", expiry: "", cvc: "" });
+  };
+
+  const handleCancel = () => setIsModalOpen(false);
+
 
   return (
     <div className={styles.basketContainer}>
@@ -43,6 +85,29 @@ function Basket() {
           </div>
         </div>
       )}
+
+      <div className={styles.shippig}>
+      <div className={styles.coupon}>
+        <input placeholder="Coupon Code"/>
+        <button>APPLY COUPON</button>
+        </div>
+     <button onClick={()=>navigate("/product")}>CONTINUE SHOPPING</button>
+      </div>
+      <div className={styles.card}>
+      <Button type="primary" onClick={showModal}>
+        Complete Order
+      </Button>
+      <Modal
+        title="Payment Details"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        okText="Pay"
+        cancelText="Cancel"
+      >
+        <PaymentCard cardData={cardData} setCardData={setCardData}/>
+      </Modal>
+      </div>
     </div>
   );
 }
