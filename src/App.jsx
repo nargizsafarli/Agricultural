@@ -6,6 +6,7 @@ import ProductPage from './Pages/ProductPage';
 import AboutPage from './Pages/AboutPage';
 import ContactPage from './Pages/ContactPage';
 import WishlistPage from './Pages/WishlistPage';
+import BasketPage from './Pages/BasketPage';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Route path="about" element={<AboutPage/>} />
       <Route path="contact" element={<ContactPage/>} />
       <Route path="wishlist" element={<WishlistPage/>}/>
+      <Route path="basket" element={<BasketPage/>}/>
     </Routes>
    </BrowserRouter>
     </div>

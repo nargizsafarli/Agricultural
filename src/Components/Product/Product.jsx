@@ -16,7 +16,7 @@ import Swal from "sweetalert2";
 function Product() {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.product);
-  const basketItems = useSelector((state) => state.basket.basketItems);
+  const basketItems = useSelector((state) => state.basket.items);
   const wishlistItems = useSelector((state) => state.wishlist.wishlistItems);
 
   const [search, setSearch] = useState("");
@@ -47,28 +47,10 @@ function Product() {
     }
   };
 
-  
-  //   if (basketProducts.includes(product.id)) {
-  //     setBasketProducts(basketProducts.filter((id) => id !== product.id));
-  //     Swal.fire({
-  //       icon: "info",
-  //       title: "Removed from Basket",
-  //       showConfirmButton: false,
-  //       timer: 1000,
-  //     });
-  //   } else {
-  //     setBasketProducts([...basketProducts, product.id]);
-  //     Swal.fire({
-  //       icon: "success",
-  //       title: "Added to Basket!",
-  //       showConfirmButton: false,
-  //       timer: 1000,
-  //     });
-  //   }
-  // };
-
   const handleBasket = (product) => {
-    if (basketItems.some((item) => item.id === product.id)) {
+    const isInBasket = basketItems.some((item) => item.id === product.id);
+  
+    if (isInBasket) {
       dispatch(removeFromBasket(product.id));
       Swal.fire({
         icon: "info",
@@ -86,6 +68,8 @@ function Product() {
       });
     }
   };
+  
+  
 
   useEffect(() => {
     dispatch(fetchProducts());

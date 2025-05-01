@@ -12,7 +12,7 @@ function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
-  const basketItems = useSelector((state) => state.basket.basketItems);
+  const items = useSelector((state) => state.basket.items);
   const wishlistItems = useSelector((state) => state.wishlist.wishlistItems);
 
   return (
@@ -32,7 +32,7 @@ function Navbar() {
          <NavLink to="/basket">
          <SlBasket />
          </NavLink>
-         <span>{basketItems.length}</span>
+         <span>{items.length}</span>
          {user ? (
            <div className={nav.userActions}>
              <p onClick={() => navigate("/contact")} style={{ cursor: "pointer" }}>{user.user_metadata.name}</p>
