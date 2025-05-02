@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 function Login() {
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.auth);
+  const { loading, loginError } = useSelector((state) => state.auth);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,21 +43,16 @@ function Login() {
     <div className={log.container}>
       <h1>Login form</h1>
       <form className={log.auth} onSubmit={handleSubmit}>
-        {error && <p className={log.error}>{error}</p>}
+        {loginError && <p className={log.error}>{loginError}</p>}
         <div className={log.form}>
-          <label htmlFor="email">E-poçt</label>
-          <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="email" id="email" value={email} placeholder="Email *" onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div className={log.form}>
-          <label htmlFor="password">Şifrə</label>
-          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" id="password" placeholder="Password *" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
         <button type="submit" className={log.button}>
           {loading ? "Yüklənir..." : "Daxil ol"}
         </button>
-        <p className={log.redirect}>
-          Hesabınız yoxdur? <Link to="/register">Qeydiyyat</Link>
-        </p>
       </form>
     </div>
   );

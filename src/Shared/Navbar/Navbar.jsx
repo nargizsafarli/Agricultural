@@ -25,22 +25,26 @@ function Navbar() {
          <NavLink to="/contact" className={({ isActive }) => isActive ? `${nav.link} ${nav.active}` : nav.link}>Contact</NavLink>
        </div>
        <div className={nav.icons}> 
-       <NavLink to='/wishlist'>
+       <NavLink to='/wishlist' className={nav.length} >
          <FcLike  />
-         </NavLink>
          <span>{wishlistItems.length}</span>
-         <NavLink to="/basket">
-         <SlBasket />
          </NavLink>
+        
+         <NavLink to="/basket" className={nav.length}>
+         <SlBasket />
          <span>{items.length}</span>
+         </NavLink>
+          
+          <div className={nav.login}>
          {user ? (
            <div className={nav.userActions}>
-             <p onClick={() => navigate("/contact")} style={{ cursor: "pointer" }}>{user.user_metadata.name}</p>
+             <p className={nav.user}>{user.user_metadata.name}</p>
              <button onClick={() => dispatch((logout()))}>Logout</button>
            </div>
          ) : (
-           <p onClick={() => navigate("/contact")} style={{ cursor: "pointer" }}>Log in</p>
+           <p onClick={() => navigate("/contact")} className={nav.users}>Log in</p>
          )}
+         </div>
        </div>
     </div>
   )

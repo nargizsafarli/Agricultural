@@ -3,47 +3,129 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .container {
   display: flex;
   justify-content: space-between;
-  padding: 18px 30px;
   align-items: center;
+  padding: 15px 30px;
   position: sticky;
-  background-color: white;
   top: 0;
-  z-index: 9999999;
-  border-bottom:solid 1px rgb(230, 227, 227);
+  z-index: 9999;
+  background-color: white;
+  border-bottom: solid 1px rgb(230, 227, 227);
+}
+.users{
+  margin: 0;
+  font-weight: bolder;
+  transition: all 0.3s ease;
+}
+.users:hover{
+  color: rgb(184, 136, 48);
 }
 .logo {
-  width: 150px;
+  width: 130px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
-.link {
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
 
-  a {
-    color: black;
-    text-decoration: none;
-    font-weight: 500;
-  }
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.link {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.link a {
+  font-size: 18px;
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.link a:hover {
+  color: #EECE38;
+  transform: translateY(-2px);
 }
 
 .active {
-  color: orange !important;
+  color:#EECE38 !important;
   transform: scale(1.1);
 }
 
 .icons {
-    font-size: 22px;
   display: flex;
-  font-weight: bold;
+  align-items: center;
+  gap: 20px;
+  font-size: 22px;
+  position: relative;
+}
+
+.length {
+  position: relative;
+  color: black;
+}
+
+.length span {
+  position: absolute;
+  top: -1px;
+  right: -10px;
+  background-color:#EECE38;
+  color: white;
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
+}
+.user{
+  margin: 0;
+}
+.login {
+  margin-left: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userActions {
+  display: flex;
   gap: 10px;
-  p{
-    margin: 0;
-  }
+  align-items: center;
+}
+
+.userActions p {
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.userActions p:hover {
+  color: orange;
+}
+
+.userActions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  background-color: orange;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.userActions button:hover {
+  background-color: darkorange;
 }

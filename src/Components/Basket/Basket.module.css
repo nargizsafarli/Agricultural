@@ -1,56 +1,151 @@
 .basketContainer {
-    padding: 20px;
-    max-width: 800px;
-    margin: auto;
-  }
-  
-  .itemsWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .itemCard {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 10px;
-  }
-  
-  .image {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  .details {
-    flex: 1;
-    margin-left: 20px;
-  }
-  
-  .quantityControls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 5px;
-  }
-  
-  .quantityControls button {
-    padding: 5px 10px;
-    font-size: 16px;
-  }
-  
-  .price {
-    font-weight: bold;
-    width: 100px;
-    text-align: right;
-  }
-  
-  .total {
-    margin-top: 30px;
-    text-align: right;
-  }
-  
+  padding: 50px 130px;
+  background: #fff;
+  font-family: 'Arial', sans-serif;
+}
+
+.itemsWrapper {
+  border-top: 2px solid #eee;
+  margin-top: 20px;
+}
+
+.itemCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  margin-left: 20px;
+}
+
+.details h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.quantityControls button {
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+}
+
+.quantityControls span {
+  padding: 0 10px;
+  font-size: 16px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 16px;
+  color: #c94b4b;
+  min-width: 80px;
+  text-align: right;
+}
+
+.total {
+  text-align: right;
+  padding-top: 20px;
+}
+
+.total h3,
+.total h4 {
+  margin: 5px 0;
+}
+
+.shippig {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.coupon {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+}
+
+.coupon input {
+  padding: 8px;
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.coupon button {
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.shippig button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.card button {
+  background-color: #ffc107;
+  color: black;
+  border: none;
+  font-weight: bold;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Yuxarıdakı başlıq üçün */
+.basketContainer h2 {
+  margin-bottom: 20px;
+}
+
+.headerRow {
+  display: flex;
+  background-color: #1a1a1a;
+  color: white;
+  padding: 35px 20px;
+  border-radius: 7px;
+  font-weight: bold;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.headerRow div {
+  flex: 1;
+}

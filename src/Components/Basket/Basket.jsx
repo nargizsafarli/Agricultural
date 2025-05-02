@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import styles from "./Basket.module.css";
-import { decreaseQuantity, increaseQuantity } from "../../redux/features/auth/basketSlice";
+import {
+  decreaseQuantity,
+  increaseQuantity,
+} from "../../redux/features/auth/basketSlice";
 import { NavLink, useNavigate } from "react-router-dom";
 import PaymentCard from "../PaymentCard/PaymentCard";
 import { Button, Modal } from "antd";
@@ -23,7 +26,7 @@ function Basket() {
     name: "",
     number: "",
     expiry: "",
-    cvc: ""
+    cvc: "",
   });
 
   const handleApplyCoupon = () => {
@@ -37,7 +40,7 @@ function Basket() {
         timer: 1500,
         showConfirmButton: false,
       });
-      setCouponCode="";
+      setCouponCode = "";
     } else {
       setDiscount(0);
       Swal.fire({
@@ -51,23 +54,23 @@ function Basket() {
   const showModal = () => setIsModalOpen(true);
   const handleOk = () => {
     const { name, number, expiry, cvc } = cardData;
-  
+
     // Əgər hər hansı input boşdursa xəbərdarlıq göstər
     if (!name || !number || !expiry || !cvc) {
       Swal.fire({
         icon: "warning",
         title: "Please fill in all fields",
-        confirmButtonText: "OK"
+        confirmButtonText: "OK",
       });
       return;
     }
-  
+
     // Əgər bütün sahələr doludursa, ödənişi tamamla
     Swal.fire({
       icon: "success",
       title: "Order Completed",
       showConfirmButton: false,
-      timer: 2000
+      timer: 2000,
     });
     dispatch(clearBasket());
     setIsModalOpen(false);
@@ -76,7 +79,6 @@ function Basket() {
 
   const handleCancel = () => setIsModalOpen(false);
 
-
   return (
     <div className={styles.basketContainer}>
       <h2>Səbət</h2>
@@ -84,6 +86,15 @@ function Basket() {
         <p>Səbət boşdur</p>
       ) : (
         <div className={styles.itemsWrapper}>
+          {basketItems.length > 0 && (
+            <div className={styles.headerRow}>
+              <div>Product</div>
+              <div>Price</div>
+              {/* <div>Quantity</div> */}
+              <div>Total</div>
+                
+            </div>
+          )}
           {basketItems.map((item) => {
             const price = item.is_discount ? item.discount_price : item.price;
             const itemTotal = price * item.quantity;
@@ -94,55 +105,59 @@ function Basket() {
                 <div className={styles.details}>
                   <h4>{item.name}</h4>
                   <div className={styles.quantityControls}>
-                    <button onClick={() => dispatch(decreaseQuantity(item.id))}>-</button>
+                    <button onClick={() => dispatch(decreaseQuantity(item.id))}>
+                      -
+                    </button>
                     <span>{item.quantity}</span>
-                    <button onClick={() => dispatch(increaseQuantity(item.id))}>+</button>
+                    <button onClick={() => dispatch(increaseQuantity(item.id))}>
+                      +
+                    </button>
                   </div>
+                  <div>{item.price}</div>
                 </div>
-                <div className={styles.price}>
-                  {itemTotal.toFixed(2)} ₼
-                </div>
+               
+                <div className={styles.price}>{itemTotal.toFixed(2)} ₼</div>
               </div>
             );
           })}
           <div className={styles.total}>
             <h3>Total price: {totalPrice.toFixed(2)} ₼</h3>
             {discount > 0 && (
-    <>
-      <h4>Discount: -{discount.toFixed(2)} ₼</h4>
-      <h3>Final price: {(totalPrice - discount).toFixed(2)} ₼</h3>
-    </>
-  )}
+              <>
+                <h4>Discount: -{discount.toFixed(2)} ₼</h4>
+                <h3>Final price: {(totalPrice - discount).toFixed(2)} ₼</h3>
+              </>
+            )}
           </div>
         </div>
       )}
 
       <div className={styles.shippig}>
-      <div className={styles.coupon}>
-  <input
-    placeholder="Coupon Code"
-    value={couponCode}
-    onChange={(e) => setCouponCode(e.target.value)}
-  />
-  <button onClick={handleApplyCoupon}>APPLY COUPON</button>
-</div>
+        <div className={styles.coupon}>
+          <input
+            placeholder="Coupon Code"
+            value={couponCode}
+            onChange={(e) => setCouponCode(e.target.value)}
+          />
+          <button onClick={handleApplyCoupon}>APPLY COUPON</button>
+        </div>
 
-     <button onClick={()=>navigate("/product")}>CONTINUE SHOPPING</button>
+        <button onClick={() => navigate("/product")}>CONTINUE SHOPPING</button>
       </div>
       <div className={styles.card}>
-      <Button type="primary" onClick={showModal}  disabled={!user}>
-        Complete Order
-      </Button>
-      <Modal
-        title="Payment Details"
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        okText="Pay"
-        cancelText="Cancel"
-      >
-        <PaymentCard cardData={cardData} setCardData={setCardData}/>
-      </Modal>
+        <Button type="primary" onClick={showModal} disabled={!user}>
+          Complete Order
+        </Button>
+        <Modal
+          title="Payment Details"
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          okText="Pay"
+          cancelText="Cancel"
+        >
+          <PaymentCard cardData={cardData} setCardData={setCardData} />
+        </Modal>
       </div>
     </div>
   );

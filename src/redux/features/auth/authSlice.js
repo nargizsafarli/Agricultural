@@ -63,44 +63,42 @@ const authSlice = createSlice({
   initialState: {
     user: null,
     loading: false,
-    error: null,
+    loginError: null,
+    registerError: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       // Register
-      .addCase(register.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(register.fulfilled, (state) => {
-        state.loading = false;
-        state.error = null;
-      })
-      .addCase(register.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      })
+     // Register
+.addCase(register.pending, (state) => {
+  state.loading = true;
+  state.registerError = null;
+})
+.addCase(register.fulfilled, (state) => {
+  state.loading = false;
+  state.registerError = null;
+})
+.addCase(register.rejected, (state, action) => {
+  state.loading = false;
+  state.registerError = action.error.message;
+})
 
-      // Login
-      .addCase(login.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(login.fulfilled, (state, action) => {
-        state.loading = false;
-        state.user = action.payload;
-        state.error = null;
-      })
-      .addCase(login.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      })
+// Login
+.addCase(login.pending, (state) => {
+  state.loading = true;
+  state.loginError = null;
+})
+.addCase(login.fulfilled, (state, action) => {
+  state.loading = false;
+  state.user = action.payload;
+  state.loginError = null;
+})
+.addCase(login.rejected, (state, action) => {
+  state.loading = false;
+  state.loginError = action.error.message;
+})
 
-      // Logout
-      .addCase(logout.fulfilled, (state) => {
-        state.user = null;
-      })
 
       // Check session
     //   .addCase(checkSession.fulfilled, (state, action) => {

@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error } = useSelector((state) => state.auth);
+  const { loading, registerError} = useSelector((state) => state.auth);
 
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -59,30 +59,27 @@ function Register() {
       <h1>Register form</h1>
       <div className={reg.con}>
         <form className={reg.auth} onSubmit={handleSubmit}>
-          {error && <p className={reg.important}>{error}</p>}
+          {registerError && <p className={reg.important}>{registerError}</p>}
           <div className={reg.form}>
-            <label htmlFor="name">Ad *</label>
-            <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+            <input type="text" id="name" placeholder="Name *" value={name} onChange={(e) => setName(e.target.value)} />
             {formErrors.name && <p className={reg.important}>{formErrors.name}</p>}
           </div>
           <div className={reg.form}>
-            <label htmlFor="surname">Soyad *</label>
-            <input type="text" id="surname" value={surname} onChange={(e) => setSurname(e.target.value)} />
+          
+            <input type="text" id="surname" placeholder="Surname *" value={surname} onChange={(e) => setSurname(e.target.value)} />
             {formErrors.surname && <p className={reg.important}>{formErrors.surname}</p>}
           </div>
           <div className={reg.form}>
-            <label htmlFor="phone">Mobil nömrə *</label>
-            <input type="text" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <input type="text" id="phone" placeholder="Phone *" value={phone} onChange={(e) => setPhone(e.target.value)} />
             {formErrors.phone && <p className={reg.important}>{formErrors.phone}</p>}
           </div>
           <div className={reg.form}>
-            <label htmlFor="email">Email *</label>
-            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="email" id="email" placeholder="Email *" value={email} onChange={(e) => setEmail(e.target.value)} />
             {formErrors.email && <p className={reg.important}>{formErrors.email}</p>}
           </div>
           <div className={reg.form}>
-            <label htmlFor="password">Şifrə *</label>
-            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          
+            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password *" />
             {formErrors.password && <p className={reg.important}>{formErrors.password}</p>}
           </div>
 
@@ -90,9 +87,9 @@ function Register() {
             {loading ? "Yüklənir..." : "Qeydiyyatdan keç"}
           </button>
 
-          <p className={reg.red}>
-            Artıq hesabınız var? <Link to="/login">Giriş</Link>
-          </p>
+          {/* <p className={reg.red}>
+            Artıq hesabınız var? <Link to="/contact">Giriş</Link>
+          </p> */}
         </form>
       </div>
     </div>

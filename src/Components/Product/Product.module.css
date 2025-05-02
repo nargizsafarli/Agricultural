@@ -9,6 +9,7 @@
     gap: 20px;
     padding: 20px;
     margin-top: 100px;
+    
   }
   
   .sidebar {
@@ -16,6 +17,10 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+ 
+  }
+  .sidebar input{
+    background-color: #e9e6e6;
   }
   
   .searchInput {
@@ -42,10 +47,14 @@
   }
   
   .products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
-    flex: 1;
+    /* display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(249px, 1fr));
+    gap: 20px; */
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   margin-left: 90px;
+      gap: 27px;
   }
 
 
@@ -53,16 +62,29 @@
     transition: all 0.3s ease;
     cursor: pointer;
      color: rgb(24, 22, 22);
-    font-size: 32px;
+    font-size: 23px;
     margin: 0 5px;
   }
   .icons{
     display: flex;
    align-items: center;
+   gap: 10px;
    justify-content: center;
    transition: all 0.3s ease;
    opacity: 0;
    
+  }
+  .icon{
+    background-color:white;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    gap: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+   border: solid 1px #EECE38;
   }
   
   .item:hover .icons{
@@ -76,7 +98,7 @@
   }
   
   .active {
-    color: gold;
+    color:  #EECE38;
   }
   
   .item {

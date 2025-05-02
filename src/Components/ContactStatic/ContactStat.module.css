@@ -6,6 +6,7 @@
 .container{
     display: flex;
     flex-direction: column;
+    
 }
 .first {
     background-image: url("./assets/Layer-648.jpg");
@@ -23,7 +24,8 @@
 
   .lay{
     position: absolute;
-    bottom: -53px;
+    bottom: -40px;
+    width: 100%;
   }
  
   .imgLogo{

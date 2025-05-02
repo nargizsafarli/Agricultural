@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../redux/features/auth/productSlice";
 import prod from "./Product.module.css";
-import { Modal } from "antd";
+
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -32,8 +32,6 @@ function Product() {
   const [inStock, setInStock] = useState(null);
   const [isDiscount, setIsDiscount] = useState(false);
   const [priceRange, setPriceRange] = useState([0, 100]);
-  const [likedProducts, setLikedProducts] = useState([]);
-  const [basketProducts, setBasketProducts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -279,7 +277,8 @@ function Product() {
                 <FontAwesomeIcon icon={faEye} className={prod.iconButton} />
               </div> */}
               <div className={prod.icons}>
-                <FontAwesomeIcon
+              <div className={prod.icon}>
+              <FontAwesomeIcon
                   icon={faHeart}
                   className={`${prod.iconButton} ${
                     wishlistItems.some((item) => item.id === product.id)
@@ -288,6 +287,8 @@ function Product() {
                   }`}
                   onClick={() => handleLike(product)}
                 />
+              </div>
+              <div className={prod.icon}>
                 <FontAwesomeIcon
                   icon={faShoppingCart}
                   className={`${prod.iconButton} ${
@@ -297,11 +298,14 @@ function Product() {
                   }`}
                   onClick={() => handleBasket(product)}
                 />
+                </div>
+                <div className={prod.icon}>
                 <FontAwesomeIcon
                   icon={faEye}
                   className={prod.iconButton}
                   onClick={() => showModal(product)}
                 />
+                </div>
               </div>
             </div>
           ))
