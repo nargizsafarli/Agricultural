@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../redux/features/auth/productSlice";
 import prod from "./Product.module.css";
+import { Modal } from "antd";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,9 +10,16 @@ import {
   faShoppingCart,
   faEye,
 } from "@fortawesome/free-solid-svg-icons";
-import { addToWishlist, removeFromWishlist } from "../../redux/features/auth/wishlistSice";
-import { addToBasket, removeFromBasket } from "../../redux/features/auth/basketSlice";
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from "../../redux/features/auth/wishlistSice";
+import {
+  addToBasket,
+  removeFromBasket,
+} from "../../redux/features/auth/basketSlice";
 import Swal from "sweetalert2";
+import Detail from "../DetailProduct/Detail";
 
 function Product() {
   const dispatch = useDispatch();
@@ -26,6 +34,18 @@ function Product() {
   const [priceRange, setPriceRange] = useState([0, 100]);
   const [likedProducts, setLikedProducts] = useState([]);
   const [basketProducts, setBasketProducts] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const showModal = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  };
 
   const handleLike = (product) => {
     if (wishlistItems.some((item) => item.id === product.id)) {
@@ -49,7 +69,7 @@ function Product() {
 
   const handleBasket = (product) => {
     const isInBasket = basketItems.some((item) => item.id === product.id);
-  
+
     if (isInBasket) {
       dispatch(removeFromBasket(product.id));
       Swal.fire({
@@ -68,8 +88,6 @@ function Product() {
       });
     }
   };
-  
-  
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -263,15 +281,27 @@ function Product() {
               <div className={prod.icons}>
                 <FontAwesomeIcon
                   icon={faHeart}
-                  className={`${prod.iconButton} ${wishlistItems.some((item) => item.id === product.id) ? prod.active : ""}`}
+                  className={`${prod.iconButton} ${
+                    wishlistItems.some((item) => item.id === product.id)
+                      ? prod.active
+                      : ""
+                  }`}
                   onClick={() => handleLike(product)}
                 />
                 <FontAwesomeIcon
                   icon={faShoppingCart}
-                  className={`${prod.iconButton} ${basketItems.some((item) => item.id === product.id) ? prod.active : ""}`}
+                  className={`${prod.iconButton} ${
+                    basketItems.some((item) => item.id === product.id)
+                      ? prod.active
+                      : ""
+                  }`}
                   onClick={() => handleBasket(product)}
                 />
-                <FontAwesomeIcon icon={faEye} className={prod.iconButton} />
+                <FontAwesomeIcon
+                  icon={faEye}
+                  className={prod.iconButton}
+                  onClick={() => showModal(product)}
+                />
               </div>
             </div>
           ))
@@ -281,6 +311,11 @@ function Product() {
           </div>
         )}
       </div>
+      <Detail
+        isModalOpen={isModalOpen}
+        handleCancel={handleCancel}
+        selectedProduct={selectedProduct}
+      />
     </div>
   );
 }

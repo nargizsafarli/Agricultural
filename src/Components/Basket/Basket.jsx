@@ -7,12 +7,16 @@ import { NavLink, useNavigate } from "react-router-dom";
 import PaymentCard from "../PaymentCard/PaymentCard";
 import { Button, Modal } from "antd";
 import Swal from "sweetalert2";
+import { clearBasket } from "../../redux/features/auth/basketSlice";
 
 function Basket() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const basketItems = useSelector((state) => state.basket.items);
   const totalPrice = useSelector((state) => state.basket.totalPrice);
+  const user = useSelector((state) => state.auth.user);
+  const [couponCode, setCouponCode] = useState("");
+  const [discount, setDiscount] = useState(0);
   console.log(basketItems);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cardData, setCardData] = useState({
@@ -22,6 +26,27 @@ function Basket() {
     cvc: ""
   });
 
+  const handleApplyCoupon = () => {
+    if (couponCode.trim().toUpperCase() === "SPRING20") {
+      const discountAmount = totalPrice * 0.2;
+      setDiscount(discountAmount);
+      Swal.fire({
+        icon: "success",
+        title: "Coupon applied successfully!",
+        text: `20% discount added.`,
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      setCouponCode="";
+    } else {
+      setDiscount(0);
+      Swal.fire({
+        icon: "error",
+        title: "Invalid Coupon",
+        text: "Please enter a valid coupon code.",
+      });
+    }
+  };
 
   const showModal = () => setIsModalOpen(true);
   const handleOk = () => {
@@ -44,7 +69,7 @@ function Basket() {
       showConfirmButton: false,
       timer: 2000
     });
-  
+    dispatch(clearBasket());
     setIsModalOpen(false);
     setCardData({ name: "", number: "", expiry: "", cvc: "" });
   };
@@ -82,19 +107,30 @@ function Basket() {
           })}
           <div className={styles.total}>
             <h3>Total price: {totalPrice.toFixed(2)} ₼</h3>
+            {discount > 0 && (
+    <>
+      <h4>Discount: -{discount.toFixed(2)} ₼</h4>
+      <h3>Final price: {(totalPrice - discount).toFixed(2)} ₼</h3>
+    </>
+  )}
           </div>
         </div>
       )}
 
       <div className={styles.shippig}>
       <div className={styles.coupon}>
-        <input placeholder="Coupon Code"/>
-        <button>APPLY COUPON</button>
-        </div>
+  <input
+    placeholder="Coupon Code"
+    value={couponCode}
+    onChange={(e) => setCouponCode(e.target.value)}
+  />
+  <button onClick={handleApplyCoupon}>APPLY COUPON</button>
+</div>
+
      <button onClick={()=>navigate("/product")}>CONTINUE SHOPPING</button>
       </div>
       <div className={styles.card}>
-      <Button type="primary" onClick={showModal}>
+      <Button type="primary" onClick={showModal}  disabled={!user}>
         Complete Order
       </Button>
       <Modal

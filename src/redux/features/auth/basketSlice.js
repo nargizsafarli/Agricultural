@@ -84,6 +84,7 @@ const basketSlice = createSlice({
         return sum + price * item.quantity;
       }, 0);
     },
+ 
 
     clearBasket: (state) => {
       state.items = [];
