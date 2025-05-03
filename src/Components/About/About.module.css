@@ -1,0 +1,205 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.frist{
+    background-image: url("./assets/Фон-1.jpg");
+    background-size: cover;
+    background-position: top;
+    width: 100%;
+    height:460px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.lay{
+    position: absolute;
+    bottom: -40px;
+    width: 100%;
+}
+
+/* About.module.css */
+
+
+  
+  .frist h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+  }
+  
+  .second {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin: 40px 0;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .sec1 {
+    text-align: center;
+    max-width: 800px;
+  }
+  
+  .sec1 p {
+    color: #69a832;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .sec1 h4 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .sec1 span {
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  .sec2 {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .sec2 img:first-child {
+    position: absolute;
+    left: -80px;
+    top: 40px;
+    width: 200px;
+  }
+  
+  .sec2 img:last-child {
+    width: 400px;
+    z-index: 1;
+  }
+  
+  .sec3 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
+  .sec3 img {
+    width: 120px;
+    height: auto;
+  }
+  
+  .third {
+    padding: 40px 0;
+  
+  }
+    .third h2 {
+    color: rgb(172, 172, 41);
+    margin-bottom: 10px;
+  }
+  
+  .third h1 {
+    margin-bottom: 40px;
+    color: black;
+  }
+  .cardCon{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  .card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .cardImg{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 280px;
+    height: 290px;
+    position: relative;
+  }
+  .cartImg{
+    width: 300px;
+    height: 330px;
+    transition: all 0.2s ease-in;
+  }
+
+ .card:hover .cartImg{
+    scale: 1.06;
+ }
+ .share{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+ }
+.shareIcon{
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+  .shareSocial{
+    display: flex;
+    background-color: white;
+    height: 40px;
+    width: 130px;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: all 0.4s ease;
+    visibility: hidden;
+    transform: translateX(-140px);
+    z-index: 0;
+  }
+  .card:hover .shareSocial{
+  visibility: visible;
+  transform: translateX(0);
+  }
+  .cardName{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .cardName p{
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 0;
+  }
+  .cardName span{
+    font-size: 20px;
+   color: gray;
+  }
+  .card:hover .cardName{
+    color: rgb(143, 143, 11);
+  }
+.forth{
+    margin-top: 40px;
+    width: 100%;
+    height: 200px;
+    background-image: url("./assets/Layer-648\ \(1\).jpg");
+}
+
+ 

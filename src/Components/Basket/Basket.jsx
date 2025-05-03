@@ -40,7 +40,6 @@ function Basket() {
         timer: 1500,
         showConfirmButton: false,
       });
-      setCouponCode = "";
     } else {
       setDiscount(0);
       Swal.fire({

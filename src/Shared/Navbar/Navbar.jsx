@@ -8,6 +8,7 @@ import logo from "./assets/logo_2-х.png"
 import nav from "./Navbar.module.css"
 import { logout } from '../../redux/features/auth/authSlice';
 
+
 function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ function Navbar() {
          {user ? (
            <div className={nav.userActions}>
              <p className={nav.user}>{user.user_metadata.name}</p>
-             <button onClick={() => dispatch((logout()))}>Logout</button>
+             <button onClick={() => dispatch(logout())}>Logout</button>
            </div>
          ) : (
            <p onClick={() => navigate("/contact")} className={nav.users}>Log in</p>

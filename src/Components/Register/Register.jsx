@@ -61,25 +61,25 @@ function Register() {
         <form className={reg.auth} onSubmit={handleSubmit}>
           {registerError && <p className={reg.important}>{registerError}</p>}
           <div className={reg.form}>
-            <input type="text" id="name" placeholder="Name *" value={name} onChange={(e) => setName(e.target.value)} />
+            <input className={reg.input} type="text" id="name" placeholder="Name *" value={name} onChange={(e) => setName(e.target.value)} />
             {formErrors.name && <p className={reg.important}>{formErrors.name}</p>}
           </div>
           <div className={reg.form}>
           
-            <input type="text" id="surname" placeholder="Surname *" value={surname} onChange={(e) => setSurname(e.target.value)} />
+            <input type="text" className={reg.input} id="surname" placeholder="Surname *" value={surname} onChange={(e) => setSurname(e.target.value)} />
             {formErrors.surname && <p className={reg.important}>{formErrors.surname}</p>}
           </div>
           <div className={reg.form}>
-            <input type="text" id="phone" placeholder="Phone *" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <input type="text" className={reg.input} id="phone" placeholder="Phone *" value={phone} onChange={(e) => setPhone(e.target.value)} />
             {formErrors.phone && <p className={reg.important}>{formErrors.phone}</p>}
           </div>
           <div className={reg.form}>
-            <input type="email" id="email" placeholder="Email *" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="email" className={reg.input} id="email" placeholder="Email *" value={email} onChange={(e) => setEmail(e.target.value)} />
             {formErrors.email && <p className={reg.important}>{formErrors.email}</p>}
           </div>
           <div className={reg.form}>
           
-            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password *" />
+            <input type="password" className={reg.input} id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password *" />
             {formErrors.password && <p className={reg.important}>{formErrors.password}</p>}
           </div>
 

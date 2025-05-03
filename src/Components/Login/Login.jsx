@@ -45,10 +45,10 @@ function Login() {
       <form className={log.auth} onSubmit={handleSubmit}>
         {loginError && <p className={log.error}>{loginError}</p>}
         <div className={log.form}>
-          <input type="email" id="email" value={email} placeholder="Email *" onChange={(e) => setEmail(e.target.value)} />
+          <input className={log.input} type="email" id="email" value={email} placeholder="Email *" onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div className={log.form}>
-          <input type="password" id="password" placeholder="Password *" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input className={log.input} type="password" id="password" placeholder="Password *" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
         <button type="submit" className={log.button}>
           {loading ? "Yüklənir..." : "Daxil ol"}

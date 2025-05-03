@@ -46,17 +46,7 @@ export const logout = createAsyncThunk(
   }
 );
 
-// // Check session thunk
-// export const checkSession = createAsyncThunk(
-//   "auth/checkSession",
-//   async () => {
-//     const {
-//       data: { session },
-//     } = await supabase.auth.getSession();
 
-//     return session?.user || null;
-//   }
-// );
 
 const authSlice = createSlice({
   name: "auth",
@@ -98,12 +88,10 @@ const authSlice = createSlice({
   state.loading = false;
   state.loginError = action.error.message;
 })
+.addCase(logout.fulfilled, (state) => {
+  state.user = null; 
+})
 
-
-      // Check session
-    //   .addCase(checkSession.fulfilled, (state, action) => {
-    //     state.user = action.payload;
-    //   });
   },
 });
 
