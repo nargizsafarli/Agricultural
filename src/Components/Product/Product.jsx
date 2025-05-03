@@ -311,7 +311,7 @@ function Product() {
           ))
         ) : (
           <div className={prod.noProduct}>
-            <p>Filtrə uyğun məhsul tapılmadı.</p>
+            <p>No products matching the filter were found</p>
           </div>
         )}
       </div>

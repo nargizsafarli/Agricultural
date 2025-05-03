@@ -3,9 +3,6 @@ import { Carousel } from "react-bootstrap";
 import slideImg1 from "./assets/Rectangle-846.jpg"
 import slideImg2 from "./assets/Rectangle-1007-min.png"
 import slideImg3 from "./assets/ezgif.com-gif-maker.jpg"
-import img1Logo1 from "./assets/1.png"
-import slide3Logo3 from "./assets/3.png"
-import slide2Logo2 from "./assets/4.png"
 import "./Slide.css"
 import { useNavigate } from "react-router-dom";
 function Slide() {
@@ -33,7 +30,7 @@ function Slide() {
           src={slideImg2}
           alt="Second slide"
         />
-        <Carousel.Caption  >
+        <Carousel.Caption>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>

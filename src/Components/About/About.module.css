@@ -8,6 +8,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 .frist{
     background-image: url("./assets/Фон-1.jpg");
     background-size: cover;
@@ -32,12 +33,15 @@
   
   .frist h2 {
     position: absolute;
-    top: 50%;
+   bottom: -45px;
+   z-index: 0;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+   color:  #e6af00;
     font-size: 48px;
     font-weight: bold;
+    font-family: 'Pacifico', cursive;
+
   }
   
   .second {
@@ -196,10 +200,11 @@
     color: rgb(143, 143, 11);
   }
 .forth{
-    margin-top: 40px;
+    background-image: url("./assets/Layer-648.jpg");
     width: 100%;
-    height: 200px;
-    background-image: url("./assets/Layer-648\ \(1\).jpg");
+    height: 550px;
+    background-position: center;
+    background-size: cover;
 }
 
  

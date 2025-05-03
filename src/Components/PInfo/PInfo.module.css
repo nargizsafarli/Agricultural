@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 .container{
     background-image: url("./assets//close-up-old-farmer-holding-basket-vegetables-man-is-standing-garden-senior-black-apron-scaled-e1628887155855.jpg");
     width: 100%;
@@ -16,6 +17,8 @@
 
     h1{
         font-size: 100px;
+        font-family: 'Pacifico', cursive;
+        font-weight: bolder;
         color: rgba(252, 185, 0, 1) ;
     }
 }

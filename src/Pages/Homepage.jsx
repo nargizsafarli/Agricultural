@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../Shared/Navbar/Navbar'
 import Grow from "../Components/GrowBeauty/Grow"
 import Slide from "../Components/SliderCom/Slide"
+import Footer from '../Shared/Footer/Footer'
 
 function Homepage() {
   return (
@@ -9,6 +10,7 @@ function Homepage() {
         <Navbar/>
         <Slide/>
         <Grow/>
+        <Footer/>
     </div>
   )
 }

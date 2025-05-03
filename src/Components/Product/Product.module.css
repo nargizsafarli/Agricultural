@@ -47,14 +47,11 @@
   }
   
   .products {
-    /* display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(249px, 1fr));
-    gap: 20px; */
    display: flex;
    flex-wrap: wrap;
    align-items: center;
    margin-left: 90px;
-      gap: 27px;
+      gap: 23px;
   }
 
 
@@ -171,9 +168,11 @@
   }
   
   .noProduct {
-    grid-column: span 3;
+    display: flex;
     text-align: center;
     font-size: 18px;
+    margin-left: 200px;
+    justify-content: center;
     color: #888;
   }
   

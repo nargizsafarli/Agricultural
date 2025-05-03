@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import styles from "./Basket.module.css";
 import {
   decreaseQuantity,
   increaseQuantity,
+  removeFromBasket,
+  clearBasket
 } from "../../redux/features/auth/basketSlice";
 import { NavLink, useNavigate } from "react-router-dom";
 import PaymentCard from "../PaymentCard/PaymentCard";
 import { Button, Modal } from "antd";
 import Swal from "sweetalert2";
-import { clearBasket } from "../../redux/features/auth/basketSlice";
 
 function Basket() {
   const navigate = useNavigate();
@@ -20,7 +20,6 @@ function Basket() {
   const user = useSelector((state) => state.auth.user);
   const [couponCode, setCouponCode] = useState("");
   const [discount, setDiscount] = useState(0);
-  console.log(basketItems);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cardData, setCardData] = useState({
     name: "",
@@ -49,12 +48,22 @@ function Basket() {
       });
     }
   };
+  const removeBasket=(item)=>{
+    dispatch(removeFromBasket(item.id));
+    Swal.fire({
+      icon: "info",
+      title: "Product removed",
+      text: `${item.name} was removed from basket`,
+      timer: 1500,
+      showConfirmButton: false,
+    });
+
+  }
 
   const showModal = () => setIsModalOpen(true);
+
   const handleOk = () => {
     const { name, number, expiry, cvc } = cardData;
-
-    // Əgər hər hansı input boşdursa xəbərdarlıq göstər
     if (!name || !number || !expiry || !cvc) {
       Swal.fire({
         icon: "warning",
@@ -64,7 +73,6 @@ function Basket() {
       return;
     }
 
-    // Əgər bütün sahələr doludursa, ödənişi tamamla
     Swal.fire({
       icon: "success",
       title: "Order Completed",
@@ -80,57 +88,67 @@ function Basket() {
 
   return (
     <div className={styles.basketContainer}>
-      <h2>Səbət</h2>
       {basketItems.length === 0 ? (
-        <p>Səbət boşdur</p>
+        <p>Basket is empty</p>
       ) : (
         <div className={styles.itemsWrapper}>
-          {basketItems.length > 0 && (
-            <div className={styles.headerRow}>
-              <div>Product</div>
-              <div>Price</div>
-              {/* <div>Quantity</div> */}
-              <div>Total</div>
-                
-            </div>
-          )}
+          <div className={styles.headerRow}>
+            <div>Product</div>
+            <div>Price</div>
+            <div>Quantity</div>
+            <div>Total</div>
+          </div>
           {basketItems.map((item) => {
             const price = item.is_discount ? item.discount_price : item.price;
             const itemTotal = price * item.quantity;
 
             return (
               <div key={item.id} className={styles.itemCard}>
-                <img src={item.img} alt={item.title} className={styles.image} />
-                <div className={styles.details}>
+                <div className={styles.productInfo}>
+                  <button
+                    className={styles.removeBtn}
+                   onClick={()=>{removeBasket(item)}}
+                  >
+                    ❌
+                  </button>
+                  <img src={item.img} alt={item.name} className={styles.image} />
                   <h4>{item.name}</h4>
-                  <div className={styles.quantityControls}>
-                    <button onClick={() => dispatch(decreaseQuantity(item.id))}>
-                      -
-                    </button>
-                    <span>{item.quantity}</span>
-                    <button onClick={() => dispatch(increaseQuantity(item.id))}>
-                      +
-                    </button>
-                  </div>
-                  <div>{item.price}</div>
                 </div>
-               
-                <div className={styles.price}>{itemTotal.toFixed(2)} ₼</div>
+
+                <div className={styles.priceInfo}>
+                  {item.is_discount ? (
+                    <>
+                      <div className={styles.discountPrice}>${item.discount_price}</div>
+                      <div className={styles.originalPrice}>${item.price}</div>
+                    </>
+                  ) : (
+                    <div className={styles.normalPrice}>${item.price}</div>
+                  )}
+                </div>
+
+                <div className={styles.quantityControls}>
+                  <button onClick={() => dispatch(decreaseQuantity(item.id))}>-</button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => dispatch(increaseQuantity(item.id))}>+</button>
+                </div>
+
+                <div className={styles.price}>${itemTotal.toFixed(2)}</div>
               </div>
             );
           })}
           <div className={styles.total}>
-            <h3>Total price: {totalPrice.toFixed(2)} ₼</h3>
+            <h3>Total price: ${totalPrice.toFixed(2)}</h3>
             {discount > 0 && (
               <>
-                <h4>Discount: -{discount.toFixed(2)} ₼</h4>
-                <h3>Final price: {(totalPrice - discount).toFixed(2)} ₼</h3>
+                <h4>Discount: -${discount.toFixed(2)}</h4>
+                <h3>Total after discount: ${(totalPrice - discount).toFixed(2)}</h3>
               </>
             )}
           </div>
         </div>
       )}
-
+      
+      {basketItems.length > 0 && (
       <div className={styles.shippig}>
         <div className={styles.coupon}>
           <input
@@ -140,9 +158,11 @@ function Basket() {
           />
           <button onClick={handleApplyCoupon}>APPLY COUPON</button>
         </div>
-
         <button onClick={() => navigate("/product")}>CONTINUE SHOPPING</button>
       </div>
+    )}
+
+    {basketItems.length > 0 && (
       <div className={styles.card}>
         <Button type="primary" onClick={showModal} disabled={!user}>
           Complete Order
@@ -158,6 +178,7 @@ function Basket() {
           <PaymentCard cardData={cardData} setCardData={setCardData} />
         </Modal>
       </div>
+    )}
     </div>
   );
 }
