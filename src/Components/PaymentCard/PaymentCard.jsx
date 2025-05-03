@@ -10,8 +10,9 @@ const PaymentCard = ({ cardData, setCardData }) => {
   return (
     <div className="card-overlay">
       <div className="card-container">
-        <h2>Payment Details</h2>
+      
         <input
+        className="paymentInput"
           type="text"
           name="name"
           placeholder="Cardholder Name"
@@ -20,6 +21,7 @@ const PaymentCard = ({ cardData, setCardData }) => {
           required
         />
         <input
+         className="paymentInput"
           type="text"
           name="number"
           placeholder="Card Number"
@@ -30,6 +32,7 @@ const PaymentCard = ({ cardData, setCardData }) => {
         />
         <div className="card-row">
           <input
+           className="paymentInput"
             type="text"
             name="expiry"
             placeholder="MM/YY"
@@ -39,6 +42,7 @@ const PaymentCard = ({ cardData, setCardData }) => {
             required
           />
           <input
+           className="paymentInput"
             type="text"
             name="cvc"
             placeholder="CVC"

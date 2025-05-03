@@ -36,7 +36,7 @@ function Form() {
       ) : (
         <>
           <Login />
-          <p className={auth.switchText}>
+          <p className={auth.switchText2}>
             Hesabınız yoxdur?{" "}
             <span onClick={() => setShowRegister(true)} className={auth.link}>
               Qeydiyyat

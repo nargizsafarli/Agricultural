@@ -152,19 +152,20 @@ function Basket() {
       <div className={styles.shippig}>
         <div className={styles.coupon}>
           <input
+          className={styles.cuponCode}
             placeholder="Coupon Code"
             value={couponCode}
             onChange={(e) => setCouponCode(e.target.value)}
           />
-          <button onClick={handleApplyCoupon}>APPLY COUPON</button>
+          <button onClick={handleApplyCoupon} className={styles.apply}>APPLY COUPON</button>
         </div>
-        <button onClick={() => navigate("/product")}>CONTINUE SHOPPING</button>
+        <button onClick={() => navigate("/product")}  className={styles.continue}>CONTINUE SHOPPING</button>
       </div>
     )}
 
     {basketItems.length > 0 && (
       <div className={styles.card}>
-        <Button type="primary" onClick={showModal} disabled={!user}>
+        <Button type="primary" onClick={showModal} disabled={!user}   className={styles.order}>
           Complete Order
         </Button>
         <Modal
