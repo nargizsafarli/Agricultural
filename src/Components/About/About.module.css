@@ -1,7 +1,7 @@
 .container{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+   
 }
 *{
     margin: 0;
@@ -105,7 +105,7 @@
   }
   
   .third {
-    padding: 40px 0;
+    padding: 40px 0 0 0;
   
   }
     .third h2 {

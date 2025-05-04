@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./Basket.module.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import {
   decreaseQuantity,
   increaseQuantity,
@@ -27,6 +29,9 @@ function Basket() {
     expiry: "",
     cvc: "",
   });
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // animasiyanın müddəti 1000ms
+  }, []);
 
   const handleApplyCoupon = () => {
     if (couponCode.trim().toUpperCase() === "SPRING20") {
@@ -87,9 +92,9 @@ function Basket() {
   const handleCancel = () => setIsModalOpen(false);
 
   return (
-    <div className={styles.basketContainer}>
+    <div className={styles.basketContainer}  data-aos="fade-up">
       {basketItems.length === 0 ? (
-        <p>Basket is empty</p>
+        <p className={styles.emptyy}>Basket is empty</p>
       ) : (
         <div className={styles.itemsWrapper}>
           <div className={styles.headerRow}>

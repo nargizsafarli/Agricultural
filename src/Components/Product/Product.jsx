@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../redux/features/auth/productSlice";
 import prod from "./Product.module.css";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -86,6 +87,9 @@ function Product() {
       });
     }
   };
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // animasiyanın müddəti 1000ms
+  }, []);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -148,9 +152,12 @@ function Product() {
     setPriceRange((prev) => [prev[0], value]);
   };
 
+ 
+     
+
   return (
     <div className={prod.container}>
-      <div className={prod.sidebar}>
+      <div className={prod.sidebar}  data-aos="fade-up">
         <input
           type="text"
           placeholder="Search products..."
@@ -183,7 +190,7 @@ function Product() {
               checked={inStock === true}
               onChange={() => handleStockChange(true)}
             />
-            Available
+          Stock
           </label>
           <label>
             <input
@@ -191,7 +198,7 @@ function Product() {
               checked={inStock === false}
               onChange={() => handleStockChange(false)}
             />
-            Not Available
+            Not Stock
           </label>
         </div>
 
@@ -203,7 +210,7 @@ function Product() {
               checked={isDiscount}
               onChange={handleDiscountChange}
             />
-            Has Discount
+             Discount
           </label>
         </div>
 
@@ -236,7 +243,7 @@ function Product() {
         </div>
       </div>
 
-      <div className={prod.products}>
+      <div className={prod.products} data-aos="fade-up">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
             <div

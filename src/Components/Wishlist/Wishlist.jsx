@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToBasket } from '../../redux/features/auth/basketSlice';
 import { removeFromWishlist } from '../../redux/features/auth/wishlistSice';
 import wish from "./WishList.module.css"
 import Swal from 'sweetalert2';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Wishlist() {
   const {  wishlistItems } = useSelector((state) => state.wishlist);
@@ -18,6 +20,9 @@ function Wishlist() {
           });
 
   }
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // animasiyanın müddəti 1000ms
+  }, []);
   const handleRemove=(id)=>{
     dispatch(removeFromWishlist(id));
     Swal.fire({
@@ -30,13 +35,13 @@ function Wishlist() {
   
   console.log(wishlistItems);
   return (
-    <div className={wish.container}>
+    <div className={wish.container} data-aos="fade-up">
       <h2>Your Wishlist</h2>
       {wishlistItems.length > 0 ? (
         <div className={wish.list}>
         <div> </div>
           { wishlistItems.map((product) => (
-            <div key={product.id} className={wish.item}>
+            <div key={product.id} className={wish.item} data-aos="fade-up">
               <button onClick={()=>{handleRemove(product.id)}} className={wish.add}>X</button>
               <img src={product.img} alt={product.name} />
               <h3>{product.name}</h3>

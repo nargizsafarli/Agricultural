@@ -40,7 +40,7 @@ function Navbar() {
          {user ? (
            <div className={nav.userActions}>
              <p className={nav.user}>{user.user_metadata.name}</p>
-             <button onClick={() => dispatch(logout())}>Logout</button>
+             <button className={nav.logoutBtn} onClick={() => dispatch(logout())}>Logout</button>
            </div>
          ) : (
            <p onClick={() => navigate("/contact")} className={nav.users}>Log in</p>

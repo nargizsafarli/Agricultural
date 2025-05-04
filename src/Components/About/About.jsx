@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import about from "./About.module.css"
 import lay from "./assets/page-title-layer (1).png"
 import sec2Img  from "./assets/Слой-1.png"
@@ -17,10 +17,13 @@ import cardI2 from "./assets/Layer-731-1.png"
 import cardI3 from "./assets/Layer-731-2.png"
 import cardI4 from "./assets/Layer-731-392x456.png"
 import forthImg from "./assets/Rectangle-846.jpg"
-
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function About() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // animasiyanın müddəti 1000ms
+  }, []);
   return (
     <div className={about.container}>
         <div className={about.frist}>
@@ -28,7 +31,7 @@ function About() {
             <h2>FARMINA</h2>
         </div>
         <div className={about.second}>
-           <div className={about.sec1}>
+           <div className={about.sec1} data-aos="fade-up">
              <p>About Farming</p>
              <h4>Awesome work with Agrarium Company</h4>
              <span>Spanish mackerel yellow weaver sixgill. Sandperch flyingfish yellowfin cutthroat trout grouper whitebait horsefish bullhead shark California smoothtongue, striped burrfish threadtail saber-toothed blenny Red Sandperch flyingfish yellowfin cutthroat trout grouper whitebait horsefish bullhead shark California smoothtongue, striped burrfish threadtail
@@ -40,16 +43,16 @@ function About() {
              <img src={sec3Img4}/>
            </div>
            </div>
-           <div className={about.sec2}>
+           <div className={about.sec2} data-aos="fade-up">
              <img src={sec2Img1}/>
              <img src={sec2Img}/>
            </div>
           
         </div>
-        <div className={about.third}>
-            <h2>Team Farmers</h2>
-            <h1>Key people in Agrarium</h1>
-            <div className={about.cardCon}>
+        <div className={about.third} data-aos="fade-up">
+            <h2 data-aos="fade-up">Team Farmers</h2>
+            <h1 data-aos="fade-up">Key people in Agrarium</h1>
+            <div className={about.cardCon} data-aos="fade-up">
             <div className={about.card}>
               <div className={about.cardImg}>
                 <img src={cardI1} className={about.cartImg}/>
@@ -124,7 +127,7 @@ function About() {
               </div>
             </div>
             </div>
-            <div className={about.forth}>
+            <div className={about.forth} data-aos="fade-up">
             </div>
         </div>
 

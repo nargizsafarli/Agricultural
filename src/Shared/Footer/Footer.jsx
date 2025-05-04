@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaTwitter, FaFacebookF, FaYoutube, FaInstagram } from "react-icons/fa";
 import footer from "./Footer.module.css";
 import logo from "./assets/Logo_2-х (1).png"
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Footer() {
+      useEffect(() => {
+        AOS.init({ duration: 1000 }); // animasiyanın müddəti 1000ms
+      }, []);
   return (
-    <div className={footer.contain}>
+    <div className={footer.contain} >
       <div className={footer.top}>
         <p className={footer.title}>Do you want to work with Agrarium?</p>
         <span className={footer.desc}>
@@ -13,8 +18,8 @@ function Footer() {
         </span>
       </div>
 
-      <div className={footer.bottom}>
-        <div className={footer.column}>
+      <div className={footer.bottom} data-aos="fade-up">
+        <div className={footer.column} data-aos="fade-up">
           <img src={logo} alt="Agrarium" className={footer.logo} />
           <p className={footer.text}>
             Wrasse climbing gourami amur pike Arctic char, steelhead sprat sea lamprey grunion.
@@ -27,7 +32,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className={footer.column}>
+        <div className={footer.column} data-aos="fade-up">
           <h4 className={footer.columnTitle}>Contact Info</h4>
           <p>523 Sylvan Ave, 5th Floor Mountain View, CA 94041 USA</p>
           <p>+1 234 719 8948</p>
@@ -35,7 +40,7 @@ function Footer() {
           <p>support@agrarium.com</p>
         </div>
 
-        <div className={footer.column}>
+        <div className={footer.column} data-aos="fade-up">
           <h4 className={footer.columnTitle}>Main Menu</h4>
           <ul className={footer.menu}>
             <li>About Us</li>

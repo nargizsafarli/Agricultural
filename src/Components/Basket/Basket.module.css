@@ -27,7 +27,11 @@
   flex: 1;
   text-align: center;
 }
-
+.price{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .productInfo {
   display: flex;
   align-items: center;
@@ -104,11 +108,16 @@
 .total {
   text-align: right;
   padding-top: 20px;
+ 
 }
-
+.emptyy{
+  text-align: center;
+  color: gray;
+}
 .total h3,
 .total h4 {
   margin: 5px 0;
+  font-size: 22px;
 }
 
 .shippig {

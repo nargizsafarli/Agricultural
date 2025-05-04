@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Grow.css"
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Grow() {
+    useEffect(() => {
+      AOS.init({ duration: 1000 }); // animasiyanın müddəti 1000ms
+    }, []);
   return (
-    <div className="container mt-5 pb-5">
-      <div className="row p-1">
-        <div className=" col-lg-6 ">
+    <div className="container mt-5 pb-5" >
+      <div className="row p-1" >
+        <div className=" col-lg-6 " data-aos="fade-up">
         <div className="growImg1">
           <div className="forAll">FOR ALL COSMETICS
           <div className="offer">30%</div>
@@ -19,7 +24,7 @@ function Grow() {
           </div>
           </div>
         </div>
-        <div className=" col-lg-6">
+        <div className=" col-lg-6"  data-aos="fade-up">
         <div className="growImg2">
           <div className="forAll">FOR ALL COSMETICS
           <div className="offer">30%</div>
