@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 
 function Grow() {
     useEffect(() => {
-      AOS.init({ duration: 1000 }); // animasiyanın müddəti 1000ms
+      AOS.init({ duration: 1000 }); 
     }, []);
   return (
     <div className="container mt-5 pb-5" >

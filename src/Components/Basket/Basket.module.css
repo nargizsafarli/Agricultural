@@ -134,12 +134,7 @@
   flex: 1;
 }
 
-/* .coupon input {
-  padding: 8px;
-  flex: 1;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-} */
+
 .cuponCode{
   padding: 8px;
   flex: 1;
@@ -147,40 +142,14 @@
   border-radius: 4px;
 }
 
-/* .coupon button {
-  background-color: #1a1a1a;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-}
 
-.shippig button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-} */
 
 .card {
   text-align: center;
   margin-top: 40px;
 }
 
-/* .card button {
-  background-color: #ffc107;
-  color: black;
-  border: none;
-  font-weight: bold;
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-} */
+
 
 .headerRow {
   display: flex;

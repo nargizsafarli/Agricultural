@@ -39,14 +39,14 @@
     font-size: 36px;
   }
   
-  /* aşağı hissə */
+ 
   .second {
     display: flex;
     padding: 40px;
     gap: 40px;
   }
   
-  /* sol tərəf */
+  
   .left {
     flex: 1;
     display: flex;
@@ -55,7 +55,7 @@
   }
   
   .left p {
-    color: #ffcc00; /* sarı */
+    color: #ffcc00;
     font-weight: bold;
     font-size: 18px;
   }
@@ -69,7 +69,7 @@
     color: #555;
   }
   
-  /* info hissəsi */
+ 
   .info {
     display: flex;
     flex-direction: column;
@@ -85,7 +85,7 @@
   
   .infoo svg {
     font-size: 30px;
-    color: #ffcc00; /* sarı iconlar */
+    color: #ffcc00; 
   }
   
   .infoDetail {
@@ -104,7 +104,7 @@
     color: #333;
   }
   
-  /* sağ tərəf */
+
   .right {
     flex: 1;
     display: flex;

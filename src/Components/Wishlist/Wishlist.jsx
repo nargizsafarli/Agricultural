@@ -21,7 +21,7 @@ function Wishlist() {
 
   }
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // animasiyanın müddəti 1000ms
+    AOS.init({ duration: 1000 }); 
   }, []);
   const handleRemove=(id)=>{
     dispatch(removeFromWishlist(id));

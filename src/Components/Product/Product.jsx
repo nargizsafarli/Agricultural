@@ -88,7 +88,7 @@ function Product() {
     }
   };
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // animasiyanın müddəti 1000ms
+    AOS.init({ duration: 1000 }); 
   }, []);
 
   useEffect(() => {
@@ -266,23 +266,6 @@ function Product() {
                 <p className={prod.normalPrice}>{product.price} $</p>
               )}
 
-              {/* <div className={prod.icons}>
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  className={`${prod.iconButton} ${
-                    likedProducts.includes(product.id) ? prod.active : ""
-                  }`}
-                  onClick={() => handleLike(product)}
-                />
-                <FontAwesomeIcon
-                  icon={faShoppingCart}
-                  className={`${prod.iconButton} ${
-                    basketProducts.includes(product.id) ? prod.active : ""
-                  }`}
-                  onClick={() => handleBasket(product)}
-                />
-                <FontAwesomeIcon icon={faEye} className={prod.iconButton} />
-              </div> */}
               <div className={prod.icons}>
               <div className={prod.icon}>
               <FontAwesomeIcon

@@ -140,9 +140,7 @@
   z-index: 1;
   transition: color 0.3s ease;
 }
-.logoutBtn:hover{
 
-}
 .logoutBtn::before{
   content: "";
   position: absolute;

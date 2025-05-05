@@ -1,18 +1,3 @@
-// import React, { useState } from 'react'
-// import auth from "./Form.module.css"
-// import Register from '../Register/Register';
-// import Login from '../Login/Login';
-
-// function Form() {
-//   return (
-//     <div className={auth.container}>
-//      <Register/>
-//      <Login/>
-//   </div>
-//   )
-// }
-
-// export default Form
 import React, { useState } from "react";
 import auth from "./Form.module.css";
 import Register from "../Register/Register";
@@ -27,9 +12,9 @@ function Form() {
         <>
           <Register />
           <p className={auth.switchText}>
-            Artıq hesabınız var?{" "}
+           Do you have an account?{" "}
             <span onClick={() => setShowRegister(false)} className={auth.link}>
-              Giriş et
+             Login
             </span>
           </p>
         </>
@@ -37,9 +22,9 @@ function Form() {
         <>
           <Login />
           <p className={auth.switchText2}>
-            Hesabınız yoxdur?{" "}
+           Donn't have any account?{" "}
             <span onClick={() => setShowRegister(true)} className={auth.link}>
-              Qeydiyyat
+             Register
             </span>
           </p>
         </>

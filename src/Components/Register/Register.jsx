@@ -19,14 +19,14 @@ function Register() {
 
   const validateForm = () => {
     let errors = {};
-    if (!name) errors.name = "Ad daxil edilməlidir.";
-    if (!surname) errors.surname = "Soyad daxil edilməlidir.";
+    if (!name) errors.name = "Name required.";
+    if (!surname) errors.surname = "Surname required";
     if (!phone || !/^\d{1,10}$/.test(phone))
-      errors.phone = "Mobil nömrə düzgün deyil!";
+      errors.phone = "The mobile number is incorrect!";
     if (!email || !/\S+@\S+\.\S+/.test(email))
-      errors.email = "Email düzgün formatda deyil.";
+      errors.email = "The email is not in the correct format.";
     if (!password || password.length < 5)
-      errors.password = "Şifrə ən azı 6 simvoldan ibarət olmalıdır.";
+      errors.password = "Password must contain at least 6 characters.";
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -43,14 +43,14 @@ function Register() {
       setEmail("");
       setPassword("");
       await Swal.fire({
-        title: "Uğurla qeydiyyatdan keçdiniz!",
+        title: "You have successfully registered!",
         icon: "success",
         timer: 3000,
         timerProgressBar: true,
         confirmButtonText: "OK",
       });
     } catch (err) {
-      console.log("Qeydiyyat xətası:", err);
+      console.log("Registration error:", err);
     }
   };
 
@@ -84,7 +84,7 @@ function Register() {
           </div>
 
           <button type="submit" className={reg.button}>
-            {loading ? "Yüklənir..." : "Qeydiyyatdan keç"}
+            {loading ? "Loading..." : "Register"}
           </button>
 
           {/* <p className={reg.red}>

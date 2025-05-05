@@ -7,7 +7,7 @@ import "aos/dist/aos.css";
 
 function Footer() {
       useEffect(() => {
-        AOS.init({ duration: 1000 }); // animasiyanın müddəti 1000ms
+        AOS.init({ duration: 1000 }); 
       }, []);
   return (
     <div className={footer.contain} >
